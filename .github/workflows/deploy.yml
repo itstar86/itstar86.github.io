@@ -16,7 +16,7 @@ jobs:
         with:
           ref: main
           submodules: false
-          fetch-depth: 1
+          fetch-depth: 0
           persist-credentials: false
           
       - name: Disable submodule processing
@@ -28,6 +28,14 @@ jobs:
           rm -f .gitmodules
           # Git 인덱스에서 submodule 참조 제거
           git rm --cached .gitmodules 2>/dev/null || true
+          
+      - name: Verify files
+        run: |
+          echo "Checking for required files..."
+          ls -la package.json || echo "ERROR: package.json not found"
+          ls -la package-lock.json || echo "ERROR: package-lock.json not found"
+          pwd
+          ls -la
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
