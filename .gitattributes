@@ -1,3 +1,4 @@
-# Git attributes to prevent submodule issues
-node_modules/.cache/gh-pages/ -diff -merge
-node_modules/.cache/ -diff -merge
+# Prevent submodule detection for gh-pages cache
+node_modules/.cache/gh-pages/ -diff -merge export-ignore
+node_modules/.cache/ -diff -merge export-ignore
+**/node_modules/.cache/** -diff -merge export-ignore
