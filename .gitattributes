@@ -1,0 +1,3 @@
+# Git attributes to prevent submodule issues
+node_modules/.cache/gh-pages/ -diff -merge
+node_modules/.cache/ -diff -merge
