@@ -19,19 +19,15 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
           
-      - name: Remove .gitmodules if exists
+      - name: Disable submodule processing
         run: |
-          if [ -f .gitmodules ]; then
-            echo "Removing .gitmodules file"
-            rm -f .gitmodules
-          fi
-          # Also check in gh-pages branch if it exists locally
-          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
-            git fetch origin gh-pages:gh-pages 2>/dev/null || true
-            if git show gh-pages:.gitmodules 2>/dev/null | grep -q .; then
-              echo "Warning: .gitmodules exists in gh-pages branch"
-            fi
-          fi
+          # .gitmodules 파일이 있어도 무시하도록 설정
+          git config --global submodule.active false
+          git config --global submodule.recurse false
+          # .gitmodules 파일 제거 (있다면)
+          rm -f .gitmodules
+          # Git 인덱스에서 submodule 참조 제거
+          git rm --cached .gitmodules 2>/dev/null || true
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
