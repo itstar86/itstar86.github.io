@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 왼쪽 이동 가능한 메뉴 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>메뉴</h2>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item active">데이터 변환기</a>
+                <a href="#" class="nav-item" id="bitcoinCalcLink">비트코인 계산기</a>
+            </nav>
+        </div>
+
+        <!-- 메뉴 열기 버튼 -->
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="main-content">
+            <div class="converter-container">
+                <header class="converter-header">
+                    <div class="header-badge">
+                        <span class="badge-dot"></span>
+                        Data Converter
+                    </div>
+                    <h1>Data Converter</h1>
+                    <p class="header-description">
+                        다양한 데이터 저장 단위를 쉽고 빠르게 변환하세요. Bytes, Kilobytes, Megabytes, Gigabytes 등 Decimal과 Binary 단위를 지원합니다.
+                    </p>
+                </header>
+                
+                <!-- 입력 필드와 변환 버튼 -->
+                <div class="input-section">
+                    <input type="number" id="valueInput" class="value-input" value="1" placeholder="값 입력">
+                    <button id="convertBtn" class="convert-btn">Convert</button>
+                </div>
+
+                <!-- From/To 선택 -->
+                <div class="unit-selectors">
+                    <div class="unit-group">
+                        <label class="unit-label">From</label>
+                        <select id="fromUnit" class="unit-select">
+                            <option value="B">Bytes (B)</option>
+                            <option value="KB">Kilobytes (KB)</option>
+                            <option value="MB">Megabytes (MB)</option>
+                            <option value="GB" selected>Gigabytes (GB)</option>
+                            <option value="TB">Terabytes (TB)</option>
+                            <option value="PB">Petabytes (PB)</option>
+                        </select>
+                    </div>
+
+                    <div class="swap-buttons">
+                        <button class="swap-btn" id="swapBtn">⇄</button>
+                    </div>
+
+                    <div class="unit-group">
+                        <label class="unit-label">To</label>
+                        <select id="toUnit" class="unit-select">
+                            <option value="B">Bytes (B)</option>
+                            <option value="KB">Kilobytes (KB)</option>
+                            <option value="MB">Megabytes (MB)</option>
+                            <option value="GB" selected>Gigabytes (GB)</option>
+                            <option value="TB">Terabytes (TB)</option>
+                            <option value="PB">Petabytes (PB)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 변환 결과 표시 -->
+                <div class="results-section">
+                    <div class="result-item">
+                        <span class="result-value" id="result1">___</span>
+                        <span class="result-unit" id="resultUnit1">---</span>
+                        <span class="result-equals">=</span>
+                        <span class="result-value" id="result2">___</span>
+                        <span class="result-unit" id="resultUnit2">---</span>
+                    </div>
+                    <div class="result-divider"></div>
+                    <div class="result-item">
+                        <span class="result-value" id="result3">___</span>
+                        <span class="result-unit" id="resultUnit3">---</span>
+                        <span class="result-equals">=</span>
+                        <span class="result-value" id="result4">___</span>
+                        <span class="result-unit" id="resultUnit4">---</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

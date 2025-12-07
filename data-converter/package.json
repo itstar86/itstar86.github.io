@@ -1,0 +1,13 @@
+{
+  "name": "data-converter",
+  "version": "1.0.0",
+  "description": "데이터 단위 변환기 웹페이지",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": ["data", "converter", "unit"],
+  "author": "",
+  "license": "MIT"
+}
