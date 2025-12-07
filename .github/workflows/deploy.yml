@@ -14,8 +14,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: false  # submodule 업데이트 비활성화 (핵심!)
-          fetch-depth: 0
+          ref: main
+          submodules: false
+          fetch-depth: 1
+          persist-credentials: false
+          
+      - name: Remove .gitmodules if exists
+        run: |
+          if [ -f .gitmodules ]; then
+            echo "Removing .gitmodules file"
+            rm -f .gitmodules
+          fi
+          # Also check in gh-pages branch if it exists locally
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git fetch origin gh-pages:gh-pages 2>/dev/null || true
+            if git show gh-pages:.gitmodules 2>/dev/null | grep -q .; then
+              echo "Warning: .gitmodules exists in gh-pages branch"
+            fi
+          fi
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
